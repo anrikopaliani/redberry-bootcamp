@@ -8,11 +8,17 @@ const Titles = () => {
   return (
     <div className="titles-container">
       <div>
-        <p>თანამშრომლის ინფო</p>
+        <p className="coworkers">თანამშრომლის ინფო</p>
+        {pathname === "/first" && <p className="mobile-page-number">1/2</p>}
         {pathname === "/first" && <div className="underline"></div>}
       </div>
       <div>
-        <p>ლეპტოპის მახასიათებლები</p>
+        <p
+          className={pathname === "/first" ? "dissapear" : ""}
+          // className="laptop-details"
+        >
+          ლეპტოპის მახასიათებლები
+        </p>
         {pathname === "/second" && <div className="underline"></div>}
       </div>
     </div>

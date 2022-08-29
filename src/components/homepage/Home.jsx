@@ -9,7 +9,13 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <div>
-        <img width={112} height={18} src={Redberry} alt="redberry logo" />
+        <img
+          className={styles.redberrylogo}
+          width={112}
+          height={18}
+          src={Redberry}
+          alt="redberry logo"
+        />
       </div>
       <div className={styles.groupImgContainer}>
         <img

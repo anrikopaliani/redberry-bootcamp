@@ -1,6 +1,7 @@
 .titles-container {
+    /* position: fixed; */
     display: flex;
-    margin-top: 91px;
+    margin-top: 38px;
     width: 500px;
     justify-content: space-between;
 }
@@ -17,4 +18,42 @@
     border: 2px solid #000000;
     margin: auto;
     margin-top: 15px;
+}
+
+.mobile-page-number {
+    display: none;
+}
+
+.dissapear {
+
+}
+
+@media (max-width: 768px) {
+    .dissapear {
+        display: none;
+    }
+
+    .titles-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-right: 20px;;
+    }
+
+    .coworkers {
+        font-weight: bolder;
+    }
+
+    .underline {
+        display: none;
+    }
+
+    .mobile-page-number {
+        display: block;
+        text-align: center;
+    }
+
+    /* .coworkers {
+        text-align: center;
+    } */
 }
