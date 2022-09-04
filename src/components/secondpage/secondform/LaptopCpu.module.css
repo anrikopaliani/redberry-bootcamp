@@ -1,0 +1,203 @@
+.fullContainer {
+    font-family: HelveticaNeue;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.hr {
+    margin-top: 52px;
+}
+
+.container div {
+    width: 30%;
+    position: relative;
+}
+
+.error label {
+    color:  #E52F2F;
+}
+
+.error input {
+    border: 1.8px solid #E52F2F;
+}
+
+.error p {
+    color: #E52F2F
+}
+
+.laptopPriceInput {
+    background: url('../../../images/Vector\ \(2\).png') no-repeat 97%;
+}
+
+.hint {
+    position: absolute;
+    top: 100%;
+    opacity: 0.7;
+}
+
+.container select, .container input {
+    width: 100%;
+}
+
+.selectContainer {
+   display: flex;
+   flex-direction: column;
+   justify-content: end;
+}
+
+.selectContainer select {
+    height: 60px;
+}
+
+.coreContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.cpuThreads {
+    display: flex;
+    flex-direction: column;
+}
+
+.ramContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.hardDriveContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.hardDriveRadioBtnContainer {
+    display: flex;
+    align-items: center;
+}
+
+.detailsContainer {
+    margin-top: 78px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.detailsContainer div {
+    width: 45%;
+}
+
+.sameLine {
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.sameLine label {
+    padding: 5px;
+}
+
+.hardDriveRadioBtnContainer {
+    width: 50px;
+    justify-content: space-between;
+}
+
+.priceContainer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.radioLabel {
+    padding-left: 100px;
+    font-size: 16px;
+    /* font-weight: 400; */
+}
+
+.laptopStateContainer {
+    width: 40%;
+    margin-top: 50px;
+}
+
+.laptopStateRadioBtnContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .sameLine input[type=radio] {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4D9AC3;
+} */
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .fullContainer {
+        width: 100%;
+    }
+
+    .container div {
+        width: 100%;
+    }
+
+    .coreContainer {
+        margin-top: 40px;;
+    }
+
+    .cpuThreads {
+        margin-top: 40px;
+    }
+
+    .detailsContainer {
+        flex-direction: column;
+    }
+
+    .detailsContainer div:nth-child(1) {
+        width: 100%;
+    }
+
+    .detailsContainer div:nth-child(2) {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .hardDriveContainer {
+        margin-top: 20px;
+    }
+
+    .priceContainer {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .priceContainer div {
+        width: 100%;
+    }
+
+    .laptopStateContainer {
+        width: 100%;
+    }
+
+    .laptopStateRadioBtnContainer {
+        width: 70%;
+    }
+    
+}

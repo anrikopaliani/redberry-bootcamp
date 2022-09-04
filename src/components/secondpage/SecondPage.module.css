@@ -1,0 +1,29 @@
+.container {
+    height: 100%;
+    width: 100%;
+    background-color: #F7F7F7;
+    overflow-x: hidden;
+}
+
+.formContainer {
+    display: flex;
+    justify-content: center;
+    height: 1600px;
+}
+
+.redberryLogo {
+    display: block;
+    margin: auto;
+    padding: 30px;
+}
+
+
+@media (max-width: 768px) {
+    .redberryLogo {
+        display: none;
+    }
+
+    .formContainer {
+        height: 100%;
+    }
+}

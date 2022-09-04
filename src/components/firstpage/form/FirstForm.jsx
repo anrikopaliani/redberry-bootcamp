@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { validate } from "./validation";
 import FormContext from "../../../context/FormContext";
 
@@ -21,6 +22,8 @@ const FirstForm = () => {
   // const [selectedPosition, setSelectedPosition] = useState("პოზიცია");
   const [positions, setPositions] = useState([]);
   const [formErrors, setFormErrors] = useState({});
+
+  const navigate = useNavigate();
 
   const fetchTeams = async () => {
     const response = await fetch(
@@ -55,20 +58,6 @@ const FirstForm = () => {
     }
   }, [selectedTeam]);
 
-  // useEffect(() => {
-  //   // EVERYTIME THE USER CHANGES THE TEAM, VARIABLE "findTeamId" CHANGES
-  //   setSelectedPosition("პოზიცია");
-  //   let findTeamId = formValues.teams
-  //     ? teams.find((team) => team.name === formValues.teams)
-  //     : 0;
-  //   setFormValues({
-  //     ...formValues,
-  //     team_id: findTeamId.id,
-  //     position_id: null,
-  //   });
-  //   fetchPositions(findTeamId.id);
-  // }, [formValues.teams]);
-
   useEffect(() => {
     window.localStorage.setItem("data", JSON.stringify(formValues));
     window.localStorage.setItem("teamName", teamName);
@@ -84,6 +73,7 @@ const FirstForm = () => {
   const handleTeamChange = (e) => {
     const { value } = e.target;
     setSelectedTeam(value);
+    setPositionName("");
     setTeamName(value);
     const { id } = teams.find((team) => team.name === teamName);
     setFormValues({
@@ -97,20 +87,6 @@ const FirstForm = () => {
     if (formValues.team_id) {
       fetchPositions(formValues.team_id);
     }
-
-    // if (!formValues.team_id) {
-    //   setSelectedTeams(e.target.value);
-    //   // let { id } = teams.find((team) => team.name === selectedTeam);
-    //   // setFormValues({ ...formValues, teams: teamValue, team_id: id });
-    //   if (teamValue) {
-    //     // fetchPositions(id);
-    //   }
-    // } else {
-    //   setSelectedTeams(e.target.value);
-    //   setFormValues({ ...formValues, teams: teamValue });
-    //   let { id } = teams.find((team) => team.name === setSelectedTeams);
-    //   fetchPositions(id);
-    // }
   };
 
   const handlePositionChange = (e) => {
@@ -124,32 +100,29 @@ const FirstForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
+    if (Object.keys(validate(formValues)).length === 0) {
+      navigate("/second");
+    }
   };
 
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
         <div className="input-name">
-          <div>
+          <div className={formErrors.name && "errorDiv"}>
             <label htmlFor="name">სახელი</label>
             <input
-              className={formErrors.name && "error-border"}
               onChange={handleChange}
               value={formValues.name}
               name="name"
               placeholder="გრიშა"
               type="text"
             />
-            {formErrors.name && formErrors.name !== "required" ? (
-              <p style={errorMessageStyle}>{formErrors.name}</p>
-            ) : (
-              <p>მინიმუმ 2 სიმბოლო, ქართული ასოები</p>
-            )}
+            <p>მინიმუმ 2 სიმბოლო, ქართული ასოები</p>
           </div>
-          <div>
+          <div className={formErrors.surname && "errorDiv"}>
             <label htmlFor="surname">გვარი</label>
             <input
-              className={formErrors.surname && "error-border"}
               onChange={handleChange}
               name="surname"
               value={formValues.surname}
@@ -157,24 +130,17 @@ const FirstForm = () => {
               type="text"
               id="surname"
             />
-            {formErrors.surname && formErrors.surname !== "required" ? (
-              <p style={errorMessageStyle}>{formErrors.surname}</p>
-            ) : (
-              <p>მინიმუმ 2 სიმბოლო, ქართული ასოები</p>
-            )}
+            <p>მინიმუმ 2 სიმბოლო, ქართული ასოები</p>
           </div>
         </div>
         <div className="dropdown-container">
           <select
-            // onChange={(e) => setSelected(e.target.value)}
             className={
               formErrors.team_id ? "error-border full-w-input" : "full-w-input"
             }
             id="teams"
             onChange={handleTeamChange}
             name="teams"
-            // defaultValue={formValues.teams || ""}
-            // value={formValues.teams || selectedTeam}
             value={teamName}
           >
             <option value="" hidden disabled>
@@ -190,9 +156,6 @@ const FirstForm = () => {
           </select>
           <select
             onChange={handlePositionChange}
-            // value={selectedPosition}
-            // value={formValues.positions}
-            // defaultValue={}
             value={positionName}
             name="positions"
             className={
@@ -200,12 +163,9 @@ const FirstForm = () => {
                 ? "error-border full-w-input mt-50"
                 : "full-w-input mt-50"
             }
+            disabled={!teamName}
           >
-            <option
-              value="პოზიცია"
-              hidden
-              // selected={selectedPosition === "პოზიცია" ? true : false}
-            >
+            <option value="პოზიცია" hidden>
               პოზიცია
             </option>
             {teams
@@ -223,39 +183,34 @@ const FirstForm = () => {
               : ""}
           </select>
         </div>
-        <div className="mail-container">
+        <div className={`mail-container ${formErrors.email && "errorDiv"}`}>
           <label htmlFor="email">მეილი</label>
           <input
             className={formErrors.email && "error-border"}
             onChange={handleChange}
             name="email"
-            value={formValues.email}
+            value={formValues.email || ""}
             type="text"
             id="email"
             placeholder="grish666@redberry.ge"
           />
-          {formErrors.email && formErrors.email !== "required" ? (
-            <p style={errorMessageStyle}>{formErrors.email}</p>
-          ) : (
-            <p>უნდა მთავრდებოდეს @redberry.ge-ით</p>
-          )}
+          <p>უნდა მთავრდებოდეს @redberry.ge-ით</p>
         </div>
-        <div className="number-container">
-          <label htmlFor="number">ტელეფონის ნომერი</label>
+        <div
+          className={`number-container ${
+            formErrors.phone_number && "errorDiv"
+          }`}
+        >
+          <label htmlFor="phone_number">ტელეფონის ნომერი</label>
           <input
-            className={formErrors.phone && "error-border"}
             onChange={handleChange}
-            name="phone"
-            value={formValues.phone}
+            name="phone_number"
+            value={formValues.phone_number || ""}
             type="text"
-            id="number"
+            id="phone_number"
             placeholder="+995 598 00 07 01"
           />
-          {formErrors.phone !== "required" && formErrors.phone ? (
-            <p style={errorMessageStyle}>{formErrors.phone}</p>
-          ) : (
-            <p>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</p>
-          )}
+          <p>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</p>
         </div>
         <button type="submit" className="submit-btn">
           შემდეგი

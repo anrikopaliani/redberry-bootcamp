@@ -24,9 +24,7 @@
     display: none;
 }
 
-.dissapear {
 
-}
 
 @media (max-width: 768px) {
     .dissapear {
@@ -36,8 +34,8 @@
     .titles-container {
         width: 100%;
         display: flex;
-        align-items: center;
-        margin-right: 20px;;
+        /* align-items: center; */
+        margin-right: 20px;
     }
 
     .coworkers {
@@ -53,7 +51,4 @@
         text-align: center;
     }
 
-    /* .coworkers {
-        text-align: center;
-    } */
 }

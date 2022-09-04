@@ -1,0 +1,188 @@
+.container {
+    width: 60%;
+    font-family: HelveticaNeue;
+}
+
+.container p {
+    font-size: 22px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.imgContainer {
+    display: flex;
+    align-items: center;
+}
+
+.imgContainer div {
+    /* padding-left: 20px; */
+    list-style: none;
+}
+
+.userCredentials {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.userCredentials p {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+.imgContainer img {
+    /* width: 577px; */
+    width: 50%;
+    height: 342px;
+}
+
+.highlighed p {
+    font-weight: bolder;
+}
+
+.hr {
+    margin-top: 80px;
+}
+
+.userLaptopContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.laptopNameContainer {
+    width: 50%;
+    display: flex;
+    margin-top: 50px;
+}
+
+.laptopNameContainerResponses {
+    padding-left: 100px;
+}
+
+.laptopCpuDetails {
+    width: 50%;
+    /* padding-left: 20px; */
+    display: flex;
+    justify-content: space-around;
+}
+
+.lastLaptopContainer {
+    display: flex;
+    margin-top: 50px;
+}
+
+.laptopPriceContainer {
+    display: flex;
+    width: 50%;
+}
+
+.laptopPriceResponses {
+    padding-left: 5%;
+}
+
+.purchaseDataContainer {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    padding-right: 5%;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .container p {
+        font-size: 16px;
+    }
+
+    .imgContainer {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .imgContainer img {
+        width: 100%;
+        height: 191px;
+    }
+
+    .imgContainer div {
+        padding: 0;
+    }
+
+    .userCredentials {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .userCredentials div {
+        width: 50%;
+    }
+
+    .hr {
+        margin-top: 17px;
+    }
+
+    .highlighted {
+        width: 50%;
+    }
+
+    .response {
+        width: 50%;
+    }
+
+    .response p {
+        padding-left: 4%;
+    }
+
+    .laptopNameContainerResponses {
+        width: 50%;
+        padding-left: 3%;
+    }
+
+    .userLaptopContainer {
+        flex-direction: column;
+    }
+
+    .laptopNameContainer {
+        margin-top: 20px;
+    }
+
+    .userLaptopContainer div {
+        width: 100%;
+    }
+
+    .laptopCpuDetails {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .lastLaptopContainer {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .laptopPriceContainer {
+        width: 100%;
+    }
+
+    .laptopPriceResponses {
+        width: 50%;
+        padding-left: 15%;
+    }
+
+    .dateResponse {
+        padding-left: 32%;
+    }
+
+    .dateKey p{
+        width: 128px;
+    }
+
+    .purchaseDataContainer {
+        justify-content: space-between;
+    }
+}

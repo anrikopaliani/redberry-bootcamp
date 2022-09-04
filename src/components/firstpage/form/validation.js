@@ -2,17 +2,15 @@ export const validate = (values) => {
   const errors = {};
   // REGEX FOR ONLY GEORGIAN LANGUAGE
   const regex = /^[აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ ]+$/;
-  //REGEX FOR EMAIL TO END WITH "@redberry.ge"
-  const emailRegex = /^[a-zA-Z0-9]+@redberry.ge$/;
-  // REGEX FOR PHONE NUMBER IN GEORGIAN NUMBER FORMAT
-  const phoneRegex = /^\+995 ?[\d]{3} ?[\d]{2} ?[\d]{2} ?[\d]{2}$/;
+  // REGEX FOR PHONE NUMBER IN GEORGIAN NUMBER FORMAT  (+995 123 45 67 89) (+995 123456789) (+995123456789)
+  const phoneRegex = /^\+995 ?[\d]{3} ?[\d]{2} ?[\d]{2} ?[\d]{2} ?$/;
   // VALIDATE NAME INPUT
   if (!values.name) {
-    errors.name = "required";
+    errors.name = "error";
   } else if (!regex.test(values.name)) {
-    errors.name = "გამოიყენე ქართული ასოები";
+    errors.name = "error";
   } else if (values.name.length < 2) {
-    errors.name = "მინიმუმ 2 სიმბოლო";
+    errors.name = "error";
   }
 
   // VALIDATE LASTNAME INPUT
@@ -26,9 +24,9 @@ export const validate = (values) => {
 
   // VALIDATE EMAIL INPUT
   if (!values.email) {
-    errors.email = "required";
-  } else if (!emailRegex.test(values.email)) {
-    errors.email = "უნდა მთავრდებოდეს @redberry.ge-თი";
+    errors.email = "error";
+  } else if (!values.email.endsWith("@redberry.ge")) {
+    errors.email = "error";
   }
 
   // VALIDATE TEAM DROPDOWN LIST
@@ -42,10 +40,10 @@ export const validate = (values) => {
   }
 
   // VALIDATE PHONE INPUT
-  if (!values.phone) {
-    errors.phone = "required";
-  } else if (!phoneRegex.test(values.phone)) {
-    errors.phone = "უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს";
+  if (!values.phone_number) {
+    errors.phone_number = "required";
+  } else if (!phoneRegex.test(values.phone_number)) {
+    errors.phone_number = "უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს";
   }
 
   return errors;

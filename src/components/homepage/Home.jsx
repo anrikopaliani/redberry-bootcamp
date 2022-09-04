@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
-import Redberry from "../../images/LOGO-02 1.svg";
+import Redberry from "../../images/LOGO-02 1.png";
 import Group from "../../images/Group1.png";
 import MobileGroup from "../../images/Group.svg";
 
 const Home = () => {
   return (
-    <div className={styles.container}>
+    <div style={{ height: "100vh" }} className={styles.container}>
       <div>
         <img
           className={styles.redberrylogo}
@@ -21,7 +21,7 @@ const Home = () => {
         <img
           className={styles.img1}
           width={781}
-          height={482}
+          height={472}
           src={Group}
           alt=""
         />
@@ -29,10 +29,10 @@ const Home = () => {
       </div>
       <div className={styles.btnContainer}>
         <Link to="/first" className={styles.btn}>
-          ჩანაწერის დამატება
+          ᲩᲐᲜᲐᲬᲔᲠᲘᲡ ᲓᲐᲛᲐᲢᲔᲑᲐ
         </Link>
-        <Link to="/" className={styles.btn}>
-          ჩანაწერების სია
+        <Link to="/laptops" className={styles.btn}>
+          ᲩᲐᲜᲐᲬᲔᲠᲔᲑᲘᲡ ᲡᲘᲐ
         </Link>
       </div>
     </div>

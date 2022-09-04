@@ -1,0 +1,9 @@
+.container {
+    overflow-y: hidden;
+}
+
+.detailsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
